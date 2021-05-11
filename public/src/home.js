@@ -20,15 +20,6 @@ function getBooksBorrowedCount(books) {
 return total
 }
 
-/*function getMostCommonGenres(books) {
-  const result = []
-  const genres = books.map((book) => {
-    return book.genre
-  })
-  console.log(genres)
-  console.log(books)
-
-}*/
 
 function getMostCommonGenres(books) {
   const reesult = []
@@ -67,59 +58,18 @@ return result.slice(0,5)
 return result
 }
 
-/*function getMostPopularAuthors(books, authors) {
-  const match = []
-  // loop through books and create a match-array that has ID = author.id and count = borrows.length
-  // if ID is already found count += borrows.length
-  // map new array and authors.find or loop through authors to find ID === author.id => [name] : authors.name.first + ' ' + authors.name.last, count: match-array.count
-  for (let o = 0; o < books.length; o++) {
-    if (match.find((found) => {
-      books[o].authorID === found.ID
-    }))
-    { let temp = (match.find((found) => {
-      books[o].authorID === found.ID}
-    )
-    match.count += books[o].borrows.length
-    )
-  }else {
-    match.push({})
-  }
-  };
-}
-
-const authorss= []
-for (let a = 0; a < authors.length; a++) {
-  authorss.push({name:authors[a].name.first + ' ' + authors.name.last})
-}
-console.log(authorss)*/
-
-
-/*function getMostPopularAuthors(books, authors) {
-  const found = []
-  for (let y = 0; y < books.length; y++) {
-if (found.find((item) => {
-  item.name === books[y].name.first + ' ' + books[y].name.last
-}))
-{ let count = found.find((book) => {
-  return book.name === books[y].name.first + ' ' + books[y].name.last}  
-) 
-count.count += books[y].borrows.length
-  }
-  else {
-    found.push({name: books[y].name.first + ' ' + books[y].name.last, count: 0})
-  }
-}
-console.log(found)
-} */
-
-function getMostPopularAuthors(books, authors){
-const result = []
-const authorss= []
+function getAuthorName(authors) {
+  const authorss= []
 for (let a = 0; a < authors.length; a++) {
   authorss.push({name: authors[a].name.first + " " + authors[a].name.last, ID: authors[a].id})
 }
-console.log(authorss)
+return authorss
+}
 
+
+function getMostPopularAuthors(books, authors){
+const result = []
+const authorss= getAuthorName(authors)
 const bookss = []
 for (let b = 0; b < books.length; b++) {
   if (bookss.find((item) => {

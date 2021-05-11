@@ -1,10 +1,4 @@
 function findAccountById(accounts, id) {
-  /*let match = {}
-  for (let i =0; i < accounts.length; i++) {
-    if (accounts[i].id === id) {
-  match = accounts[i]
-    }    
-} return match */
 let match = accounts.find((user) => 
 user.id === id)
 return match
@@ -16,33 +10,25 @@ let result = accounts.sort((accountA, accountB) => {
 }) 
 return result
   }
-    // got through book and find how many times their id pops up in books.borrowed.id[array] 
-   /*function getTotalNumberOfBorrows(account, books) {
-      let total = 0
-    for (let a = 0; a < books.length; a ++) {
-      for (let b = 0; b < books.borrow.length; b++) {
-      if (books[a].borrows[b].id === account.id) {
-        total += 1
-      }
-      }
-    }
-    console.log(books[0].borrows[1].id)
-    return total
-    }*/
+  
+
 
     function getTotalNumberOfBorrows(account, books) {
-      let total = 0
-    for (let a = 0; a < books.length; a++) {
-      let borrowList = books[a].borrows.filter((borrow)=>{
-        return borrow.id === account.id
-      })
-      console.log(borrowList)
-        if(borrowList.length){
-        total++;
+      let total = books.reduce((acc, book) => {
+        let borrowList = book.borrows.filter((borrow)=> {
+          return borrow.id === account.id
+        })
+          if(borrowList.length){
+          return acc += 1
+        }
+        else {
+          return acc
+        }
+      },0)
+      console.log(total)
+        return total
       }
-    }
-      return total
-    }
+    
 
  
 
